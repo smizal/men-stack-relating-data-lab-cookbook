@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Edit <%= pantry._id %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="new-container">
+      <div class="new-form-container">
+        <h1>Edit listing</h1>
+        <form
+          action="/users/<%= user._id %>/foods/<%= pantry._id %>?_method=PUT"
+          method="POST"
+        >
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name" value="<%= pantry.name %>" />
+          <button type="submit">Edit food</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

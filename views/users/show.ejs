@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>My Profile</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="profile-container">
+      <h1>Profile</h1>
+      <p>
+        You have <%= myListings.length %> <%= myListings.length===1 ? 'Listing'
+        : 'Listings' %>
+      </p>
+      <div class="profile-card-container">
+        <% myListings.forEach((listing)=> { %>
+        <a href="/listings/<%= listing._id %>">
+          <h4><%= listing.city %> Listing</h4>
+          <p>Owned by <%= listing.owner.username %></p>
+        </a>
+        <% }) %>
+      </div>
+
+      <div class="profile-favorites-container">
+        <p>
+          You Have <%= myFavoriteListings.length %> <%=
+          myFavoriteListings.length === 1 ? 'Favorite' : 'Favorites' %>
+        </p>
+        <div class="profile-card-container">
+          <% myFavoriteListings.forEach((listing)=> { %>
+          <a href="/listings/<%= listing._id %>">
+            <h4><%= listing.city %> Listing</h4>
+            <p>Owned by <%= listing.owner.username %></p>
+          </a>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

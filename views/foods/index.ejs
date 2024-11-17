@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>My Pantry</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="index-header">
+      <h1>Welcome to CookBook</h1>
+      <a href="/users/<%= user._id %>/foods/new">+ Add food</a>
+    </div>
+    <div class="pantries-container">
+      <% pantries.forEach((pantry)=>{ %>
+      <div class="pantry-container">
+        <div class="pantry-title"><%= pantry.name %></div>
+        <form
+          action="/users/<%= user._id %>/foods/<%= pantry._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button type="submit">Delete</button>
+        </form>
+        <form
+          action="/users/<%= user._id %>/foods/<%= pantry._id %>/edit"
+          method="GET"
+        >
+          <button type="submit">Edit</button>
+        </form>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>

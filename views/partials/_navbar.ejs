@@ -1,0 +1,33 @@
+<nav>
+  <% if(user) { %>
+  <div class="landing-header">
+    <div class="logo-container">
+      <div class="house-icon"></div>
+      <h1><a href="/">CookBook</a></h1>
+    </div>
+    <div class="nav-links">
+      <a href="/users/<%=user._id%>/foods">My Pantry</a>
+      <a href="/users">All Pantries</a>
+      <!--<a href="/recipes">My Recipes</a>
+      <a href="/ingredients">My Ingredients</a>-->
+      <a href="/users/<%=user._id%>/foods/new">add new food</a>
+      <a href="/auth/sign-out">Sign Out</a>
+    </div>
+  </div>
+
+  <% } else { %>
+  <div class="landing-header">
+    <div class="logo-container">
+      <div class="house-icon"></div>
+      <h1>CookBook</h1>
+    </div>
+    <div class="auth-links">
+      <a href="/auth/sign-up">Sign Up</a>
+      <a href="/auth/sign-in">Sign In</a>
+    </div>
+  </div>
+  <% } %>
+</nav>
+<% if(message) { %>
+<p style="color: <%= message.color %>"><%= message.msg %></p>
+<% } %>

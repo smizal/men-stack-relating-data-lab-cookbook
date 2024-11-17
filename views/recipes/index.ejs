@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Welcome to CookBook</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="index-header">
+      <h1>Welcome to My Recipes</h1>
+      <a href="/recipes/new">+ Add Recipe</a>
+    </div>
+    <ul>
+      <% recipes.forEach((recipe)=>{ %>
+      <li>
+        <a href="/recipes/<%= recipe._id %>"><%= recipe.name %></a>
+        <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+        <form action="/recipes/<%= recipe._id %>/edit" method="GET">
+          <button type="submit">Edit</button>
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+    <div class="card-container"></div>
+  </body>
+</html>

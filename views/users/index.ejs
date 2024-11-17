@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>All Users Pantries</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="index-header">
+      <h1>Welcome to CookBook</h1>
+      <a href="/users/<%= user._id %>/foods/new">+ Add food</a>
+    </div>
+    <% allUsersPantries.forEach((userPantries)=>{ %>
+    <p><%= userPantries.username %></p>
+    <% userPantries.pantry.forEach((pantry)=>{ %>
+    <div class="pantry-container"><%= pantry.name %></div>
+    <% }) %> <% }) %>
+    <div class="card-container"></div>
+  </body>
+</html>
