@@ -17,9 +17,6 @@ const path = require('path')
 const authController = require('./controllers/auth.js')
 const foodsController = require('./controllers/foods.js')
 const usersController = require('./controllers/users.js')
-const recipesController = require('./controllers/recipes.js')
-const ingredientsController = require('./controllers/ingredients.js')
-//const listingsController = require('./controllers/listings')
 
 mongoose.connect(process.env.MONGO_DB)
 
@@ -71,9 +68,6 @@ app.get('/vip-lounge', isSignedIn, (req, res) => {
 
 // use controllers
 app.use('/auth', authController)
-app.use('/recipes', isSignedIn, recipesController)
-app.use('/ingredients', isSignedIn, ingredientsController)
-//app.use('/listings', isSignedIn, listingsController)
 app.use('/users', isSignedIn, usersController)
 app.use('/users/:userId/foods', isSignedIn, foodsController)
 
